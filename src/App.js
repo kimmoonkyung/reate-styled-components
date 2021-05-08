@@ -4,12 +4,12 @@ import styled from 'styled-components';
 const Circle = styled.div`
     width: 5rem;
     height: 5rem;
-    background: black;
+    background: ${(props) => props.color || 'pink'};
     border-radius: 50%;
 `;
 
 function App() {
-    return <Circle />;
+    return <Circle color="" />;
 }
 
 export default App;
