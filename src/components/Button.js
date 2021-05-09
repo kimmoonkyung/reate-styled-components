@@ -87,7 +87,6 @@ const StyledButton = styled.button`
         margin-left: 1rem;
     }
 
-    /* 리팩토링 */
     ${colorStyles};
     ${sizeStyles};
     ${fullWidthStyle};

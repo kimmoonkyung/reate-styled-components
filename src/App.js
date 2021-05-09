@@ -11,12 +11,6 @@ const AppBlock = styled.div`
     padding: 1rem;
 `;
 
-const ButtonGroup = styled.div`
-    & + & {
-        margin-top: 1rem;
-    }
-`;
-
 const palette = {
     blue: '#228be6',
     gray: '#496057',
