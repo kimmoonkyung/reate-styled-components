@@ -19,6 +19,29 @@ const colorStyles = css`
     }}
 `;
 
+const sizes = {
+    large: {
+        height: '3rem',
+        fontSize: '1.25rem',
+    },
+    medium: {
+        height: '2.25rem',
+        fontSize: '1rem',
+    },
+    small: {
+        height: '1.75rem',
+        fontSize: '0.875rem',
+    },
+};
+
+const sizeStyles = css`
+    /* 크기 sizes 로 리팩토링 */
+    ${({ size }) => css`
+        height: ${sizes[size].height};
+        font-size: ${sizes[size].fontSize};
+    `}
+`;
+
 const StyledButton = styled.button`
     /* 공통 스타일 */
     display: inline-flex;
@@ -31,13 +54,13 @@ const StyledButton = styled.button`
     padding-left: 1rem;
     padding-right: 1rem;
 
-    padding-top: 0.6rem; /* 나는 이거 안하면 버튼 텍스트가 상단에 박힘 */
+    /* 나는 이거 안하면 버튼 텍스트가 상단에 박힘 */
+    justify-content: center;
+    align-items: center;
 
-    /* 크기 */
-    height: 2.25rem;
-    font-size: 1rem;
-
-    ${colorStyles}; /* 리팩토링 */
+    /* 리팩토링 */
+    ${colorStyles};
+    ${sizeStyles};
 
     /* 기타 */
     & + & {
@@ -45,9 +68,9 @@ const StyledButton = styled.button`
     }
 `;
 
-function Button({ children, color, ...rest }) {
+function Button({ children, color, size, ...rest }) {
     return (
-        <StyledButton color={color} {...rest}>
+        <StyledButton color={color} size={size} {...rest}>
             {children}
         </StyledButton>
     );
@@ -55,6 +78,7 @@ function Button({ children, color, ...rest }) {
 
 Button.defaultProps = {
     color: 'blue',
+    size: 'medium',
 };
 
 export default Button;
